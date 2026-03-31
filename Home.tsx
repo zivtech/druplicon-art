@@ -256,9 +256,9 @@ export default function Home() {
         number="08"
         title="Variable Typography"
         subtitle="Multi-Weight Typographic ASCII"
-        description="Inspired by chenglou.me/pretext — a shared field drives three simultaneous renderings. The source field exposes live particles plus interactive eyes you can steer, the proportional panel uses Georgia with measured glyph widths, and the monospace panel uses a tighter grid so both text renderings keep the Druplicon silhouette intact."
+        description="Inspired by chenglou.me/pretext — a shared particle field drives three simultaneous renderings. The source field shows the live distortion field, the proportional panel uses Georgia with measured glyph widths, and the monospace panel uses a tighter grid so both text renderings keep the Druplicon silhouette intact."
         accentColor="amber"
-        tech="Interactive Field → Measured Glyph Width → Proportional + Monospace"
+        tech="Particle Field → Measured Glyph Width → Proportional + Monospace"
       >
         <Suspense fallback={<LoadingSpinner />}>
           <VariableTypoAscii />
@@ -298,9 +298,28 @@ export default function Home() {
             <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
             <span>Typography</span>
           </div>
-          <p className="mt-8 text-xs tracking-[0.18em] uppercase font-mono text-muted-foreground/65">
-            Made with love by Zivtech (and AI)
-          </p>
+          <div className="mt-8 flex flex-col items-center gap-3 text-xs tracking-[0.18em] uppercase font-mono text-muted-foreground/65">
+            <p>
+              Made with love by{" "}
+              <a
+                href="https://www.zivtech.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[#93C5E4] hover:text-white transition-colors"
+              >
+                Zivtech
+              </a>{" "}
+              (and AI)
+            </p>
+            <a
+              href="https://github.com/zivtech/druplicon-art"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#93C5E4] hover:text-white transition-colors"
+            >
+              GitHub Repo
+            </a>
+          </div>
         </div>
       </footer>
     </div>
