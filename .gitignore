@@ -1,0 +1,5 @@
+dist
+node_modules
+.omx
+.tmp-*.png
+.DS_Store
