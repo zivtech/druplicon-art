@@ -298,6 +298,9 @@ export default function Home() {
             <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
             <span>Typography</span>
           </div>
+          <p className="mt-8 text-xs tracking-[0.18em] uppercase font-mono text-muted-foreground/65">
+            Made with love by Zivtech (and AI)
+          </p>
         </div>
       </footer>
     </div>

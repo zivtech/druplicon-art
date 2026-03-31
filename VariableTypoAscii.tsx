@@ -131,10 +131,10 @@ function buildSourceParticles(cols: number, rows: number) {
 
 function buildPropGlyphs(ctx: CanvasRenderingContext2D) {
   const variants = [
-    { chars: PROP_CHARS_LIGHT, weight: "400", style: "normal", color: "#93C5E4", alpha: 0.88 },
-    { chars: PROP_CHARS_MED, weight: "400", style: "italic", color: "#0073BA", alpha: 0.96 },
-    { chars: PROP_CHARS_MED, weight: "600", style: "italic", color: "#00598E", alpha: 1.02 },
-    { chars: PROP_CHARS_HEAVY, weight: "700", style: "normal", color: "#004975", alpha: 1.08 },
+    { chars: PROP_CHARS_LIGHT, weight: "400", style: "normal", color: "#F7FCFF", alpha: 1.16 },
+    { chars: PROP_CHARS_MED, weight: "400", style: "italic", color: "#EEF9FF", alpha: 1.18 },
+    { chars: PROP_CHARS_MED, weight: "600", style: "italic", color: "#E4F4FF", alpha: 1.22 },
+    { chars: PROP_CHARS_HEAVY, weight: "700", style: "normal", color: "#FFFFFF", alpha: 1.26 },
   ] as const;
 
   const rankMap = new Map(
@@ -324,7 +324,7 @@ export default function VariableTypoAscii() {
       for (let y = 0; y < TEXT_ROWS; y++) {
         for (let x = 0; x < propCols; x++) {
           const brightness = propField[y * propCols + x];
-          if (brightness <= 0.04) continue;
+          if (brightness <= 0.03) continue;
 
           const glyph = selectPropGlyph(propGlyphs, brightness, propCellWidth);
           const drawX =
@@ -332,11 +332,11 @@ export default function VariableTypoAscii() {
           const drawY = y * PROP_LINE_HEIGHT + offsetY;
 
           offscreenCtx.font = glyph.font;
-          offscreenCtx.shadowBlur = 5;
-          offscreenCtx.shadowColor = hexToRgba(glyph.color, 0.45);
+          offscreenCtx.shadowBlur = 10;
+          offscreenCtx.shadowColor = hexToRgba("#3BA8FF", 0.88);
           offscreenCtx.fillStyle = hexToRgba(
             glyph.color,
-            clamp((0.5 + brightness * 0.6) * glyph.alpha, 0, 1)
+            clamp((0.88 + brightness * 0.42) * glyph.alpha, 0, 1)
           );
           offscreenCtx.fillText(glyph.char, drawX, drawY);
         }
@@ -361,24 +361,24 @@ export default function VariableTypoAscii() {
       for (let y = 0; y < TEXT_ROWS; y++) {
         for (let x = 0; x < monoCols; x++) {
           const brightness = monoField[y * monoCols + x];
-          if (brightness <= 0.04) continue;
+          if (brightness <= 0.03) continue;
 
           const charIndex = Math.floor(brightness * (MONO_CHARS.length - 1));
           const char = MONO_CHARS[Math.min(charIndex, MONO_CHARS.length - 1)];
           const tone =
             brightness > 0.72
-              ? "#004975"
-              : brightness > 0.45
-                ? "#00598E"
+              ? "#F3FBFF"
+            : brightness > 0.45
+                ? "#EEF9FF"
                 : brightness > 0.22
-                  ? "#0073BA"
-                  : "#93C5E4";
+                  ? "#D7EEFF"
+                  : "#C7E8FF";
           const drawX = x * monoCellWidth + offsetX;
           const drawY = y * MONO_LINE_HEIGHT + offsetY;
 
-          offscreenCtx.shadowBlur = 5;
-          offscreenCtx.shadowColor = hexToRgba(tone, 0.42);
-          offscreenCtx.fillStyle = hexToRgba(tone, 0.58 + brightness * 0.52);
+          offscreenCtx.shadowBlur = 10;
+          offscreenCtx.shadowColor = hexToRgba("#2F9DFF", 0.84);
+          offscreenCtx.fillStyle = hexToRgba(tone, 0.86 + brightness * 0.28);
           offscreenCtx.fillText(char, drawX, drawY);
         }
       }
