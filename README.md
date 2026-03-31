@@ -54,7 +54,7 @@ The Vite `base` path is configured automatically for the GitHub repository name 
 
 Expected Pages URL for this repo:
 
-`https://alexu-a.github.io/druplicon-art/`
+`https://zivtech.github.io/druplicon-art/`
 
 ## Repository Notes
 
